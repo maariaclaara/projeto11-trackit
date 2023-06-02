@@ -136,15 +136,16 @@ const ContainerRegister = styled.div`
 `;
 
 const FormRegister = styled.div`
-  width: 303px;
+  width: 328px;
   heidht: 147px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin-top: 32px;
 
   input{
-    width: 100%;
+    width: 303px;
     border: 1px solid #D5D5D5;
     border-radius: 5px;
     height: 45px;
@@ -178,7 +179,7 @@ button {
     color: #FFFFFF;
     background-color: #52B6FF;
     height: 45px;
-    width: 100%;
+    width: 328px;
     border-radius: 5px;
     border: none;
 

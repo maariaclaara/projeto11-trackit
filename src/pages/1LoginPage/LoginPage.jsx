@@ -88,9 +88,10 @@ export default function LoginPage() {
 
     </FormLogin>
     
-      <Link to="/cadastro" data-test="singup-link">
+      <Link to="/cadastro" data-test="signup-link">
         <p>Não tem uma conta? Cadastre-se!</p>
       </Link>
+
     </ContainerLogin>
   );
 }
@@ -125,16 +126,23 @@ const FormLogin = styled.div`
   justify-content: center;
   margin-top: 32px;
 
-  input {
-    width: 100%;
+  width: 328px;
+  heidht: 147px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 32px;
+
+  input{
+    width: 303px;
     border: 1px solid #D5D5D5;
     border-radius: 5px;
     height: 45px;
     line-height: 25px;
+    font-size: 20px;
     padding: 11px;
     margin-bottom: 6px;
-    font-size: 20px;
-    color: gray;
 
     &::placeholder{
       color: #dbdbdb;
@@ -149,11 +157,10 @@ const FormLogin = styled.div`
     }
   }
 
-  button {
+button {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
     font-weight: 400;
     font-size: 21px;
     line-height: 26px;
@@ -161,13 +168,14 @@ const FormLogin = styled.div`
     color: #FFFFFF;
     background-color: #52B6FF;
     height: 45px;
-    width: 100%;
+    width: 328px;
     border-radius: 5px;
     border: none;
 
     &:disabled {
       background-color: lightblue;
   }
+}
 `;
 
 
