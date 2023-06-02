@@ -1,13 +1,12 @@
 import Top from "../../components/Top";
 import Bottom from "../../components/Bottom";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 export default function HabitsPage() {
   
   return (
     <ContainerHabit>
-      
+
       <Top />
 
       <Title>

@@ -27,8 +27,7 @@ export default function LoginPage() {
     promiseLogin.then((response) => {
       console.log (response.data)
       setDisable(false)
-      navigate("/habitos")
-      window.location.reload()
+      navigate("/hoje")
       
   })
       promiseLogin.catch((error) => {
@@ -89,7 +88,7 @@ export default function LoginPage() {
 
     </FormLogin>
     
-      <Link to="/cadastro" data-test="login-btn">
+      <Link to="/cadastro" data-test="singup-link">
         <p>Não tem uma conta? Cadastre-se!</p>
       </Link>
     </ContainerLogin>

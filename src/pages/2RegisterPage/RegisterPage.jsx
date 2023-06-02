@@ -29,9 +29,7 @@ export default function RegisterPage() {
     promiseRegister.then((response) => {
       console.log (response.data)
       setDisable(false);
-      console.log(email)
       navigate("/");
-      window.location.reload()
 })
     promiseRegister.catch((error) => {
       alert(`${error.response.data.message}`)
@@ -110,7 +108,7 @@ export default function RegisterPage() {
     </form>
     </FormRegister>
     
-      <Link to="/">
+      <Link to="/" data-test="login-link">
         <p>Já tem uma conta? Faça login!</p>
       </Link>
     </ContainerRegister>
