@@ -1,28 +1,31 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useContext } from "react";
+import { LoginContext } from "../context/LoginContext";
 
 export default function Top() {
 
+  const { data } = useContext(LoginContext);
 
   return (
     <ContainerTop>
+      <div data-test="header">
 
       <Link to="/">
-
         <p>TrackIt</p>
-
       </Link>
 
-      <Image src="https://recreio.uol.com.br/media/_versions/animacoes/bob_esponja_capa_widelg.jpg" alt="UserImage" />
+      <Image src={data.image} alt="UserImage" data-test="avatar"/>
+      </div>
     </ContainerTop>
   );
 }
 
 const ContainerTop= styled.div`
-  width: 100vw;
+  width: 100%;
   height: 70px;
   background: #126ba5;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.50);
   position: fixed;
   top: 0;
   left: 0;
@@ -30,6 +33,12 @@ const ContainerTop= styled.div`
   justify-content: space-between;
   align-items: center;
   z-index: 1;
+
+  div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   p {
     font-family: 'Playball', cursive;
@@ -40,6 +49,7 @@ const ContainerTop= styled.div`
     margin-left: 18px;
     text-decoration: none;
   }
+}
 `;
 
 const Image = styled.img`

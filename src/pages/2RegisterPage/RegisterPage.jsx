@@ -12,7 +12,7 @@ export default function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [photo, setPhoto] = useState("");
+  const [image, setImage] = useState("");
   const [disable, setDisable] = useState(false);
   const navigate = useNavigate();
 
@@ -22,12 +22,11 @@ export default function RegisterPage() {
     e.preventDefault();
     setDisable(true);
 
-    const registerPage = {email: email, name: name, image: photo, password: password};
+    const registerPage = {email: email, name: name, image: image, password: password};
     const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up";
     const promiseRegister = axios.post(URL, registerPage);
 
-    promiseRegister.then((response) => {
-      console.log (response.data)
+    promiseRegister.then(() => {
       setDisable(false);
       navigate("/");
 })
@@ -36,7 +35,7 @@ export default function RegisterPage() {
       setDisable(false);
       setEmail("");
       setPassword("");
-      setPhoto("");
+      setImage("");
       setName("");
     })
 }
@@ -81,10 +80,10 @@ export default function RegisterPage() {
         data-test="user-image-input"
         placeholder="foto"
         id="foto"
-        type="URL"
+        type="text"
         disabled={disable}
-        value={photo}
-        onChange={(e) => setPhoto(e.target.value)}
+        value={image}
+        onChange={(e) => setImage(e.target.value)}
         required
       />
 
@@ -132,6 +131,10 @@ const ContainerRegister = styled.div`
     text-align: center;
     text-decoration-line: underline;  
     color: #52b6ff;
+
+    &:hover{
+      color: #00fa9a;
+    }
   }
 `;
 
@@ -153,6 +156,15 @@ const FormRegister = styled.div`
     font-size: 20px;
     padding: 11px;
     margin-bottom: 6px;
+    color: gray;
+
+    &:hover{
+      background-color: lightgray;
+
+      ::placeholder {
+        color: gray;
+      }
+    }
 
     &::placeholder{
       color: #dbdbdb;
@@ -182,6 +194,10 @@ button {
     width: 328px;
     border-radius: 5px;
     border: none;
+
+    &:hover{
+      background-color: #00fa9a;
+    }
 
     &:disabled {
       background-color: lightblue;

@@ -2,43 +2,49 @@
 import { Link } from "react-router-dom";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import styled from "styled-components";
+import { useContext } from "react";
+import { LoginContext } from "../context/LoginContext";
 
 export default function Footer() {
 
-  return (
-    <ContainerBottom>
-      <Link to={"/habitos"}>
-        <h1>Hábitos</h1>
-      </Link>
+  const { percent } = useContext(LoginContext);
 
-      <CircularButton>
-        <Link to="/hoje">
-          <h1>Hoje</h1>
+  return (
+    <ContainerBottom key="habitos" data-test="menu">
+        <Link to={"/habitos"} data-test="habit-link">
+          <h1>Hábitos</h1>
         </Link>
+
+        <CircularButton>
+          <Link to="/hoje" data-test="today-link">
+            <h1>Hoje</h1>
+          </Link>
         
-        <CircularProgressbar       
-          background
-          backgroundPadding={8}
-          styles={buildStyles({
+          <CircularProgressbar 
+            value={percent}      
+            background
+            backgroundPadding={8}
+            styles={buildStyles({
             strokeLinecap: "round",
-            textSize: "18px",
-            color: "#ffffff",
+            textSize: "20px",
+            pathColor:"#ffffff",
+            textColor: "#ffffff",
             trailColor: "transparent",
             backgroundColor: "#52B6FF"
           })}
         />
-      </CircularButton>
+        </CircularButton>
 
-      <Link to={"/historico"}>
-        <h1>Histórico</h1>
-      </Link>
+        <Link to={"/historico"} data-test="history-link">
+          <h1>Histórico</h1>
+        </Link>
     </ContainerBottom>
   );
 }
 
 export const ContainerBottom = styled.div`
   background-color: #ffffff;
-  width: 100vw;
+  width: 100%;
   height: 70px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.50);
   position: fixed;

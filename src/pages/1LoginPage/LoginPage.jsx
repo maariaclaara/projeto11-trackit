@@ -6,7 +6,6 @@ import styled from "styled-components";
 import axios from "axios";
 
 
-
 export default function LoginPage() {
 
   const [email, setEmail] = useState("");
@@ -25,10 +24,10 @@ export default function LoginPage() {
       const promiseLogin = axios.post(URL, loginPage);
 
     promiseLogin.then((response) => {
-      console.log (response.data)
+      const dataString = JSON.stringify(response.data);
+      localStorage.setItem("userDataString", dataString);
       setDisable(false)
-      navigate("/hoje")
-      
+      navigate("/habitos")     
   })
       promiseLogin.catch((error) => {
         alert(`${error.response.data.message}`)
@@ -114,6 +113,10 @@ const ContainerLogin = styled.div`
     text-align: center;
     text-decoration-line: underline;  
     color: #52b6ff;
+
+    &:hover{
+      color: #00fa9a;
+    }
   }
 `;
 
@@ -143,9 +146,18 @@ const FormLogin = styled.div`
     font-size: 20px;
     padding: 11px;
     margin-bottom: 6px;
+    color: gray;
 
     &::placeholder{
       color: #dbdbdb;
+    }
+
+    &:hover{
+      background-color: lightgray;
+
+      ::placeholder {
+        color: gray;
+      }
     }
 
     &:disabled{
@@ -171,6 +183,10 @@ button {
     width: 328px;
     border-radius: 5px;
     border: none;
+
+    &:hover{
+      background-color: #00fa9a;
+    }
 
     &:disabled {
       background-color: lightblue;
