@@ -1,48 +1,116 @@
-import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import { ThreeDots } from "react-loader-spinner";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 
 export default function RegisterPage() {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [photo, setPhoto] = useState("");
+  const [disable, setDisable] = useState(false);
+  const navigate = useNavigate();
+
+  
+  function formRegister(e) {
+
+    e.preventDefault();
+    setDisable(true);
+
+    const registerPage = {email: email, name: name, image: photo, password: password};
+    const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up";
+    const promiseRegister = axios.post(URL, registerPage);
+
+    promiseRegister.then((response) => {
+      console.log (response.data)
+      setDisable(false);
+      console.log(email)
+      navigate("/");
+      window.location.reload()
+})
+    promiseRegister.catch((error) => {
+      alert(`${error.response.data.message}`)
+      setDisable(false);
+      setEmail("");
+      setPassword("");
+      setPhoto("");
+      setName("");
+    })
+}
+
   return (
     <ContainerRegister>
       <Logo src={logo} alt="Logo TrackIt" />
 
       <FormRegister>
+      <form onSubmit={formRegister}>
       <input
+        data-test="email-input"
         placeholder="email"
         type="email"
+        disabled={disable}
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
         required
       />
 
       <input
+        data-test="password-input"
         placeholder="senha"
         type="password"
+        disabled={disable}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
         required
       />
 
       <input
+        data-test="user-name-input"
         placeholder="nome"
         type="text"
+        disabled={disable}
+        value={name}
+        onChange={(e) => setName(e.target.value)}
         required
       />
 
       <input
+        data-test="user-image-input"
         placeholder="foto"
+        id="foto"
         type="URL"
+        disabled={disable}
+        value={photo}
+        onChange={(e) => setPhoto(e.target.value)}
         required
       />
 
-      <ButtonRegister>
+      <button 
+      data-test="signup-btn"
+      disabled={disable} 
+      type="submit">
 
-      <button type="submit">
-        Cadastrar
+      {disable 
+      
+      ? <ThreeDots 
+        height="80"
+        width="80" 
+        radius="9"
+        color="white"
+     /> 
+     
+     : "Cadastrar"}
+        
       </button>
-
-      </ButtonRegister>
+    </form>
     </FormRegister>
     
-      <Link to="/cadastro" data-test="login-btn">
+      <Link to="/">
         <p>Já tem uma conta? Faça login!</p>
       </Link>
     </ContainerRegister>
@@ -86,13 +154,25 @@ const FormRegister = styled.div`
     font-size: 20px;
     padding: 11px;
     margin-bottom: 6px;
+
+    &::placeholder{
+      color: #dbdbdb;
+    }
+
+    &:disabled{
+      background-color: #f2f2f2;
+
+      ::placeholder {
+        color: #afafaf;
+      }
+    }
   }
-`;
 
-const ButtonRegister = styled.div`
-  width: 100%;
 
-  button {
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-weight: 400;
     font-size: 21px;
     line-height: 26px;
@@ -103,7 +183,11 @@ const ButtonRegister = styled.div`
     width: 100%;
     border-radius: 5px;
     border: none;
+
+    &:disabled {
+      background-color: lightblue;
   }
+}
 `;
 
 const Logo = styled.img`

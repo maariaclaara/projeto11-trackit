@@ -3,12 +3,17 @@ import styled from "styled-components";
 
 export default function Top() {
 
+
   return (
     <ContainerTop>
+
       <Link to="/">
+
         <p>TrackIt</p>
+
       </Link>
-      <Image src="https://img.freepik.com/fotos-gratis/imagem-aproximada-da-cabeca-de-um-lindo-leao_181624-35855.jpg?w=2000" alt="User Image" />
+
+      <Image src="https://recreio.uol.com.br/media/_versions/animacoes/bob_esponja_capa_widelg.jpg" alt="UserImage" />
     </ContainerTop>
   );
 }

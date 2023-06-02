@@ -29,7 +29,7 @@ export default function Footer() {
         />
       </CircularButton>
 
-      <Link to={"/historico"} data-test="history-link">
+      <Link to={"/historico"}>
         <h1>Histórico</h1>
       </Link>
     </ContainerBottom>

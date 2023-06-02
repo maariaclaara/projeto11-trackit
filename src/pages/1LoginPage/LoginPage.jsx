@@ -1,33 +1,92 @@
-import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import { ThreeDots } from "react-loader-spinner";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
+
 
 
 export default function LoginPage() {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [disable, setDisable] = useState(false);
+  const navigate = useNavigate();
+
+
+  function formLogin(e) {
+
+      e.preventDefault();
+      setDisable(true);
+
+      const loginPage = { email: email, password: password };  
+      const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login";
+      const promiseLogin = axios.post(URL, loginPage);
+
+    promiseLogin.then((response) => {
+      console.log (response.data)
+      setDisable(false)
+      navigate("/habitos")
+      window.location.reload()
+      
+  })
+      promiseLogin.catch((error) => {
+        alert(`${error.response.data.message}`)
+        setDisable(false);
+        setEmail("");
+        setPassword("");
+      })
+}
+
   return (
     <ContainerLogin>
       <Logo src={logo} alt="Logo TrackIt" />
 
       <FormLogin>
+
+      <form onSubmit={formLogin}>
+
       <input
+        data-test="email-input"
         placeholder="email"
         type="email"
+        disabled={disable}
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
         required
       />
 
       <input
+        data-test="password-input"
         placeholder="senha"
         type="password"
+        disabled={disable}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
         required
       />
 
-      <ButtonLogin>
+      <button
+      data-test="login-btn"
+      disabled={disable} 
+      type="submit">
 
-      <button type="submit">
-        Entrar
+      {disable 
+      
+      ? <ThreeDots 
+        height="80"
+        width="80" 
+        radius="9"
+        color="white"
+     /> 
+     
+     : "Entrar"}
+
       </button>
 
-      </ButtonLogin>
+    </form>
+
     </FormLogin>
     
       <Link to="/cadastro" data-test="login-btn">
@@ -36,6 +95,7 @@ export default function LoginPage() {
     </ContainerLogin>
   );
 }
+
 
 const ContainerLogin = styled.div`
   font-family: 'Lexend Deca';
@@ -63,9 +123,10 @@ const FormLogin = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin-top: 32px;
 
-  input{
+  input {
     width: 100%;
     border: 1px solid #D5D5D5;
     border-radius: 5px;
@@ -74,13 +135,26 @@ const FormLogin = styled.div`
     padding: 11px;
     margin-bottom: 6px;
     font-size: 20px;
-  }
-`;
+    color: gray;
 
-const ButtonLogin = styled.div`
-  width: 100%;
+    &::placeholder{
+      color: #dbdbdb;
+    }
+
+    &:disabled{
+      background-color: #f2f2f2;
+
+      ::placeholder {
+        color: #afafaf;
+      }
+    }
+  }
 
   button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     font-weight: 400;
     font-size: 21px;
     line-height: 26px;
@@ -91,8 +165,12 @@ const ButtonLogin = styled.div`
     width: 100%;
     border-radius: 5px;
     border: none;
+
+    &:disabled {
+      background-color: lightblue;
   }
 `;
+
 
 const Logo = styled.img`
   padding: 20px;
