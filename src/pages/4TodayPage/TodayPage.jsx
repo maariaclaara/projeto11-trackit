@@ -2,7 +2,7 @@ import Top from "../../components/Top";
 import Bottom from "../../components/Bottom";
 import styled from "styled-components";
 
-export default function HabitsPage() {
+export default function TodayPage() {
   
   return (
     <ContainerHabit>
