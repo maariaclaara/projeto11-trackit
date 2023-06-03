@@ -27,7 +27,7 @@ export default function LoginPage() {
       const dataString = JSON.stringify(response.data);
       localStorage.setItem("userDataString", dataString);
       setDisable(false)
-      navigate("/habitos")     
+      navigate("/hoje")     
   })
       promiseLogin.catch((error) => {
         alert(`${error.response.data.message}`)
