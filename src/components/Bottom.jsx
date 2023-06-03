@@ -10,7 +10,8 @@ export default function Footer() {
   const { percent } = useContext(LoginContext);
 
   return (
-    <ContainerBottom key="habitos" data-test="menu">
+    <ContainerBottom>
+      <div data-test="menu">
         <Link to={"/habitos"} data-test="habit-link">
           <h1>Hábitos</h1>
         </Link>
@@ -38,6 +39,7 @@ export default function Footer() {
         <Link to={"/historico"} data-test="history-link">
           <h1>Histórico</h1>
         </Link>
+        </div>
     </ContainerBottom>
   );
 }
@@ -55,6 +57,14 @@ export const ContainerBottom = styled.div`
   justify-content: space-between;
   align-items: center;
   text-decoration: none;
+
+  div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 150px;
+  }
 
   a {
     padding: 25px;
