@@ -12,7 +12,8 @@ export default function Bottom() {
   return (
     <ContainerBottom>
       <div data-test="menu">
-        <Link to={"/habitos"} data-test="habit-link">
+
+        <Link data-test="habit-link" to={"/habitos"}>
           <h1>Hábitos</h1>
         </Link>
 
@@ -37,9 +38,10 @@ export default function Bottom() {
         />
         </CircularButton>
 
-        <Link to={"/historico"} data-test="history-link">
+        <Link data-test="history-link" to={"/historico"}> 
           <h1>Histórico</h1>
         </Link>
+        
         </div>
     </ContainerBottom>
   );
@@ -50,7 +52,7 @@ export const ContainerBottom = styled.div`
   width: 100%;
   height: 70px;
   position: fixed;
-  z-index;1;
+  z-index; 1;
   bottom: 0;
   left: 0;
   display: flex;
@@ -64,7 +66,6 @@ export const ContainerBottom = styled.div`
   align-items: center;
   width: 100%;
   height: 150px;
-  }
 
   a {
     padding: 25px;
@@ -78,6 +79,7 @@ export const ContainerBottom = styled.div`
       color: #00fa9a;    
       }
   }
+}
 `;
 
 const CircularButton = styled.div`
@@ -89,7 +91,6 @@ const CircularButton = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 
   h1 {
     display: flex;

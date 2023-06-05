@@ -19,8 +19,7 @@ export default function ListHabits ({visibility, setVisibility, name, days, inde
   
       promiseDelete.then( () => {
       setVisibility((visibility += 1))
-      alert('Hábito deletado com sucesso!') 
-      window.location.reload();
+      alert('Este hábito será deletado da sua lista!') 
       })
       
       promiseDelete.catch(error => {

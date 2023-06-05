@@ -25,8 +25,8 @@ const ContainerHistoric = styled.div`
   flex-direction: column;
   justify-content: left;
   align-items: left;
-  padding-top: 70px;
   margin-left: 15px;
+  padding: 70px;
 
   h1 {
     color: #126ba5;

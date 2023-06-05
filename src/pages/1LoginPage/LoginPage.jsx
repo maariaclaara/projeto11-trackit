@@ -199,5 +199,4 @@ const Logo = styled.img`
   padding: 20px;
   width: 180px;
   height: 174px;
-  margin-top: 68px;
 `;

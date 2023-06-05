@@ -55,7 +55,7 @@ export default function HabitsPage() {
               key={i}
               visibility={reloadList}
               setVisibility={setReloadList}
-              index={j.id}
+              id={j.id}
               name={j.name}
               days={j.days}
             />
@@ -80,9 +80,9 @@ const ContainerHabit = styled.div`
   display: ${(props) => props.displayMode};
   flex-direction: column;
   justify-content: center;
-  margin-top:70px;
   margin-left: 15px;
   width: 100%;
+  padding: 70px;
 
   p {
     color: #666666;

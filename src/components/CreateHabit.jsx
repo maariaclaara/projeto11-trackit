@@ -25,7 +25,7 @@ export default function CreateHabit ({display, setDisplay}) {
   
         promiseCreate.then(() => {
         setDisable(false)
-        window.location.reload();    
+        location.reload()
     })
         promiseCreate.catch(() => {
           alert("Preencha todos os campos para criar um novo hábito!")
