@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
 
-export default function Footer() {
+export default function Bottom() {
 
   const { percent } = useContext(LoginContext);
 
@@ -23,8 +23,9 @@ export default function Footer() {
         
           <CircularProgressbar 
             value={percent}      
-            background
+            background="#ffffff"
             backgroundPadding={8}
+
             styles={buildStyles({
             strokeLinecap: "round",
             textSize: "20px",
@@ -48,7 +49,6 @@ export const ContainerBottom = styled.div`
   background-color: #ffffff;
   width: 100%;
   height: 70px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.50);
   position: fixed;
   z-index;1;
   bottom: 0;
@@ -73,6 +73,10 @@ export const ContainerBottom = styled.div`
     color: #52b6ff;
     text-decoration: none;
     cursor: pointer;
+
+    &:hover{
+      color: #00fa9a;    
+      }
   }
 `;
 
@@ -85,6 +89,7 @@ const CircularButton = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
 
   h1 {
     display: flex;

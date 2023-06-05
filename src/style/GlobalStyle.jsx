@@ -25,10 +25,20 @@ const GlobalStyle = createGlobalStyle`
 	footer, header, hgroup, menu, nav, section {
 		display: block;
 	}
+
+	* {
+		box-sizing: border-box;
+	  }
+	
 	body {
 		line-height: 1;
 		font-family: 'Lexend Deca', sans-serif;
 		background-color: #E5E5E5;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		width: 100%;
 	}
 
 	input, button {

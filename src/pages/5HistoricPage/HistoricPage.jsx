@@ -14,10 +14,6 @@ export default function HistoricPage() {
           <h1>Histórico</h1>
           <p>Em breve você poderá ver o histórico dos seus hábitos aqui!</p>
 
-          <input 
-          type="date"
-          placeholder="Escolha a data desejada" />
-
         </ContainerHistoric>    
       <Bottom />
     </>

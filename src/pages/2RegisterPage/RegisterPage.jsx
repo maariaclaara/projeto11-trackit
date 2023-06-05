@@ -191,7 +191,7 @@ button {
     color: #FFFFFF;
     background-color: #52B6FF;
     height: 45px;
-    width: 328px;
+    width: 303px;
     border-radius: 5px;
     border: none;
 
